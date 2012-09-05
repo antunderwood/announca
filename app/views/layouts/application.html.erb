@@ -4,11 +4,40 @@
   <title>Announca</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag params[:controller] %>
+  <%= javascript_include_tag params[:controller] %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Announca</a>
+      <ul class="nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span2">
+        <!--Sidebar content-->
+        <ul>
+          <% if current_user %>
+            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+            <li><%= link_to "Logout", :logout %></li>
+            <li><%= link_to "Add new user", new_user_path if current_user.has_role? :admin %></li>
+          <% else %>
+            <li><%= link_to "Login", :login %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="span10">
+        <!--Body content-->
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
