@@ -11,29 +11,30 @@
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="#">Announca</a>
-      <ul class="nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+      <%= link_to "Announca", root_path, :class => "brand" %>
+      <% if current_user && current_user.has_role?(:admin) %>
+        <ul class="nav pull-left">
+          <li><%= link_to "New post", new_post_path %></li>
+          <li><%= link_to "New group", new_group_path %></li>
+          <li><%= link_to "New announcee", new_announcee_path %></li>
+        </ul>
+      <% end %>
+      <ul class="nav pull-right">
+        <% if current_user %>
+          <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+          <li><%= link_to "Logout", :logout %></li>
+          <% if current_user.has_role? :admin %>
+            <li><%= link_to "Add new user", new_user_path  %></li>
+          <% end %>
+        <% else %>
+          <li><%= link_to "Login", :login %></li>
+        <% end %>
       </ul>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row-fluid">
-      <div class="span2">
-        <!--Sidebar content-->
-        <ul>
-          <% if current_user %>
-            <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", :logout %></li>
-            <li><%= link_to "Add new user", new_user_path if current_user.has_role? :admin %></li>
-          <% else %>
-            <li><%= link_to "Login", :login %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="span10">
+      <div class="span12">
         <!--Body content-->
         <%= yield %>
       </div>

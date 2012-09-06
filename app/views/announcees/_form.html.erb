@@ -1,0 +1,32 @@
+<%= form_for(@announcee) do |f| %>
+  <% if @announcee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@announcee.errors.count, "error") %> prohibited this announcee from being saved:</h2>
+
+      <ul>
+      <% @announcee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <% @groups.each do |group| %>
+    <%= check_box_tag "announcee[group_ids][]", group.id, @announcee.groups.include?(group) %>&nbsp;<%= group.name %><br/>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

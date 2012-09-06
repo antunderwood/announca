@@ -1,0 +1,27 @@
+<h1>Listing announcees</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @announcees.each do |announcee| %>
+  <tr>
+    <td><%= announcee.first_name %></td>
+    <td><%= announcee.last_name %></td>
+    <td><%= announcee.email %></td>
+    <td><%= link_to 'Show', announcee %></td>
+    <td><%= link_to 'Edit', edit_announcee_path(announcee) %></td>
+    <td><%= link_to 'Destroy', announcee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Announcee', new_announcee_path %>

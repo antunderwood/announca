@@ -1,4 +1,8 @@
 Announca::Application.routes.draw do
+  resources :announcees
+
+  resources :groups
+
   resources :posts
 
   mount Ckeditor::Engine => '/ckeditor'
