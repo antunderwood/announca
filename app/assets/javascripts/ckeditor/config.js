@@ -10,6 +10,10 @@ CKEDITOR.editorConfig = function( config )
       { name: 'basicstyles', items : [ 'Bold','Italic','Strike','-','RemoveFormat' ] },
       { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
   ];
+  config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
+  config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+  config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+  config.filebrowserImageUploadUrl = "/ckeditor/pictures"
   config.uiColor = '#9AB8F3';
   config.height = "500"
 };

@@ -46,7 +46,7 @@ class AnnounceesController < ApplicationController
 
     respond_to do |format|
       if @announcee.save
-        format.html { redirect_to @announcee, notice: 'Announcee was successfully created.' }
+        format.html { redirect_to announcees_url, notice: 'Announcee was successfully created.' }
         format.json { render json: @announcee, status: :created, location: @announcee }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class AnnounceesController < ApplicationController
 
     respond_to do |format|
       if @announcee.update_attributes(params[:announcee])
-        format.html { redirect_to @announcee, notice: 'Announcee was successfully updated.' }
+        format.html { redirect_to announcees_url, notice: 'Announcee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

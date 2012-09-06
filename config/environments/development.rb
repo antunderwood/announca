@@ -34,4 +34,16 @@ Announca::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #smtp email
+  config.action_mailer.delivery_method = :smtp
+  
 end
+ActionMailer::Base.smtp_settings = {
+	:address => "smtp.gmail.com",
+	:port => 587,
+	:authentication => :plain,
+	:domain => ENV['GMAIL_SMTP_USER'],
+	:user_name => ENV['GMAIL_SMTP_USER'],
+	:password => ENV['GMAIL_SMTP_PASSWORD'],
+}
