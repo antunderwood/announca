@@ -4,4 +4,8 @@ class Group < ActiveRecord::Base
   has_many :post_group_associations
   has_many :announcees, :through => :group_memberships
   has_many :group_memberships
+
+  def self.sorted
+    order(:name)
+  end
 end

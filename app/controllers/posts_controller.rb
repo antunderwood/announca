@@ -2,7 +2,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if current_user and current_user.has_role? :admin
+      @posts = Post.all
+    elsif params[:token]
+      announcee = Announcee.find_by_token(params[:token])
+      @posts = Post.viewable_by_announcee(announcee)
+    else
+      @posts = Post.public
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +33,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-    @groups = Group.all
+    @groups = Group.sorted.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +44,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @groups = Group.all
+    @groups = Group.sorted.all
   end
 
   # POST /posts

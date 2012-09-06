@@ -15,8 +15,8 @@
       <% if current_user && current_user.has_role?(:admin) %>
         <ul class="nav pull-left">
           <li><%= link_to "New post", new_post_path %></li>
-          <li><%= link_to "New group", new_group_path %></li>
-          <li><%= link_to "New announcee", new_announcee_path %></li>
+          <li><%= link_to "Groups", groups_path %></li>
+          <li><%= link_to "Announcees", announcees_path %></li>
         </ul>
       <% end %>
       <ul class="nav pull-right">

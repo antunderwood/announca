@@ -3,4 +3,13 @@ class Post < ActiveRecord::Base
   has_many :groups, :through => :post_group_associations
   has_many :post_group_associations
   accepts_nested_attributes_for :groups, :allow_destroy => true
+
+  def self.public
+    joins(:groups).where("groups.name = ?", "public")
+  end
+
+  def self.viewable_by_announcee(announcee)
+    groups = announcee.groups
+    joins(:groups).where("groups.id IN (?) OR groups.name = ?", groups.map{|group| group.id}, "public").uniq
+  end
 end

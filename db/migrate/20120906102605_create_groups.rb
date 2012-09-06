@@ -5,5 +5,6 @@ class CreateGroups < ActiveRecord::Migration
 
       t.timestamps
     end
+    Group.create(:name => "public")
   end
 end

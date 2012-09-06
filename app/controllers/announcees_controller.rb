@@ -25,7 +25,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/new.json
   def new
     @announcee = Announcee.new
-    @groups = Group.all
+    @groups = Group.sorted.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +36,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/1/edit
   def edit
     @announcee = Announcee.find(params[:id])
-    @groups = Group.all
+    @groups = Group.sorted.all
   end
 
   # POST /announcees
