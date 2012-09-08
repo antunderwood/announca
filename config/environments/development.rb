@@ -37,7 +37,6 @@ Announca::Application.configure do
   
   #smtp email
   config.action_mailer.delivery_method = :smtp
-  
 end
 ActionMailer::Base.smtp_settings = {
 	:address => "smtp.gmail.com",

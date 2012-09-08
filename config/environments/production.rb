@@ -65,6 +65,11 @@ Announca::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "Announca Error: ",
+    :sender_address => "email2ants@gmail.com",
+    :exception_recipients => ["email2ants@gmail.com"]
 end
 ActionMailer::Base.smtp_settings = {
   :address        => 'smtp.sendgrid.net',
