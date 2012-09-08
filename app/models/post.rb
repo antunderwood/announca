@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_many :post_group_associations
   accepts_nested_attributes_for :groups, :allow_destroy => true
   after_create :send_mailing
+  default_scope order("created_at DESC")
 
   def self.public
     joins(:groups).where("groups.name = ?", "public")
