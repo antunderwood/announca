@@ -1,6 +1,8 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
   <%= raw post.body %>
+  <br>
+  <%= link_to "Edit", edit_post_path(post) if current_user  && current_user.has_role?(:admin) %>
 <%- end -%>
 <%= will_paginate @posts %>
 <%= link_to 'New Post', new_post_path if current_user  && current_user.has_role?(:admin) %>
