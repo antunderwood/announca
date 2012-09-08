@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
+    <th>Name</th>
     <th>Email</th>
+    <th>Web link</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +12,9 @@
 
 <% @announcees.each do |announcee| %>
   <tr>
-    <td><%= announcee.first_name %></td>
-    <td><%= announcee.last_name %></td>
+    <td><%= announcee.full_name %></td>
     <td><%= announcee.email %></td>
+    <td><%= link_to "Web link", posts_url(:token => announcee.token) %></td>
     <td><%= link_to 'Show', announcee %></td>
     <td><%= link_to 'Edit', edit_announcee_path(announcee) %></td>
     <td><%= link_to 'Destroy', announcee, method: :delete, data: { confirm: 'Are you sure?' } %></td>

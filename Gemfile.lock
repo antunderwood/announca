@@ -36,6 +36,8 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.4.2)
+    bootstrap-will_paginate (0.0.8)
+      will_paginate
     builder (3.0.0)
     cancan (1.6.8)
     ckeditor (3.7.1)
@@ -141,6 +143,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     uuidtools (2.1.3)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -148,6 +151,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 1.3.4)
   bootstrap-sass (~> 2.0.4.0)
+  bootstrap-will_paginate
   cancan
   ckeditor (= 3.7.1)
   coffee-rails (~> 3.2.1)

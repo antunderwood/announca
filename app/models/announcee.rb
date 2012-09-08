@@ -9,6 +9,11 @@ class Announcee < ActiveRecord::Base
     group_ids = post.groups.map{|group| group.id}
     joins(:group_memberships).where("group_memberships.group_id in (?) AND subscribed_to_mailings = ?", group_ids, true).uniq
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   private
   def  create_token
     self.token = SecureRandom.hex

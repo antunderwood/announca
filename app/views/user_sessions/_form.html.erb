@@ -1,13 +1,9 @@
 <%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :username %><br />
+    <h4><%= label_tag :username %></h4>
     <%= text_field_tag :username %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br />
+
+    <h4><%= label_tag :password %></h4>
     <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
+    <br>
     <%= submit_tag "Login" %>
-  </div>
 <% end %>

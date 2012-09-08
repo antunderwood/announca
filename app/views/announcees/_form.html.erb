@@ -10,20 +10,18 @@
       </ul>
     </div>
   <% end %>
+  <h4><%= f.label :first_name %></h4>
+  <%= f.text_field :first_name %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+  <h4> <%= f.label :last_name %></h4>
+  <%= f.text_field :last_name %>
+
+  <h4><%= f.label :email %></h4>
+  <%= f.text_field :email %>
+  
+  <h4>Group Membership</h4>
   <% @groups.each do |group| %>
+    <%- next if group.name == "public" -%>
     <%= check_box_tag "announcee[group_ids][]", group.id, @announcee.groups.include?(group) %>&nbsp;<%= group.name %><br/>
   <% end %>
   <div class="actions">

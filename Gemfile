@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem "ckeditor", "3.7.1"
 gem "paperclip"
 gem 'aws-sdk', '~> 1.3.4'
+gem 'bootstrap-will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -3,12 +3,12 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if current_user and current_user.has_role? :admin
-      @posts = Post.all
+      @posts = Post.paginate(:page => params[:page], :per_page => 5)
     elsif params[:token]
       announcee = Announcee.find_by_token(params[:token])
-      @posts = Post.viewable_by_announcee(announcee)
+      @posts = Post.viewable_by_announcee(announcee).paginate(:page => params[:page], :per_page => 5)
     else
-      @posts = Post.public
+      @posts = Post.public.paginate(:page => params[:page], :per_page => 5)
     end
 
 
