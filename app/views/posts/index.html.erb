@@ -1,7 +1,9 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
+  <h4>Posted on <%= l post.created_at, :format => :date_and_time %></h4>
+  <hr>
   <%= raw post.body %>
-  <br>
+  <hr>
   <%= link_to "Edit", edit_post_path(post) if current_user  && current_user.has_role?(:admin) %>
 <%- end -%>
 <%= will_paginate @posts %>
