@@ -11,7 +11,7 @@
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <%= link_to "Announca", root_path, :class => "brand" %>
+      <%= link_to Configurable.site_title, root_path, :class => "brand" %>
       <% if current_user && current_user.has_role?(:admin) %>
         <ul class="nav pull-left">
           <li><%= link_to "New post", new_post_path %></li>

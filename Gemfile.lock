@@ -51,6 +51,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    configurable_engine (0.2.9)
+      activerecord (~> 3)
+      rails (~> 3)
     erubis (2.7.0)
     exception_notification (2.6.1)
       actionmailer (>= 3.0.4)
@@ -157,6 +160,7 @@ DEPENDENCIES
   cancan
   ckeditor (= 3.7.1)
   coffee-rails (~> 3.2.1)
+  configurable_engine
   exception_notification
   jquery-rails
   paperclip
