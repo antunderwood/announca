@@ -12,10 +12,16 @@ navbar_top_colour:
   name: Navigation bar top colour
   type: string
   default: "#333333"
+  
 navbar_bottom_colour:
   name: Navigation bar colour
   type: string
   default: "#222222"
+  
+blog_emailer_address:
+  name: Blog emailer address
+  type: string
+  default: "me@example.com"
 #   
 # 'name' is the name that appears in the edit form
 # 

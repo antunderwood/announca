@@ -19,7 +19,9 @@ class Post < ActiveRecord::Base
   def send_mailing
     email_recipients = Announcee.mail_recipients_for_post(self)
     unless email_recipients.empty?
-      PostMailer.new_post(self).deliver
+      email_recipients.each do |email_recipient|
+        PostMailer.new_post(self,email_recipient).deliver
+      end
     end
   end
 end

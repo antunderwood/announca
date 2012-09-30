@@ -1,2 +1,6 @@
 <h1><%= @post.title%></h1>
 <%= raw @post.body %>
+
+<% @post.groups.each do |group| %>
+  Unsubscribe to <%= group.name %> post mailings <%= link_to "Click here", unsubscribe_url(:group_name => group.name, :token => @announcee.token) %><br>
+<% end %>

@@ -1,4 +1,6 @@
 Announca::Application.routes.draw do
+  get "group_memberships/update"
+
   resources :announcees
 
   resources :groups
@@ -12,6 +14,8 @@ Announca::Application.routes.draw do
   get "user_sessions/create"
 
   get "user_sessions/destroy"
+  
+  match 'announcees/:token/unsubscribe/:group_name' => 'group_memberships#update', :as => :unsubscribe
 
   resources :users
   resources :user_sessions

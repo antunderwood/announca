@@ -25,7 +25,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/new.json
   def new
     @announcee = Announcee.new
-    @groups = Group.sorted.all
+    @announcee.setup_group_memberships
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +36,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/1/edit
   def edit
     @announcee = Announcee.find(params[:id])
-    @groups = Group.sorted.all
+    @announcee.setup_group_memberships
   end
 
   # POST /announcees
@@ -81,5 +81,13 @@ class AnnounceesController < ApplicationController
       format.html { redirect_to announcees_url }
       format.json { head :no_content }
     end
+  end
+  
+  def unsubscribe
+    announcee = Announcee.find_by_token(params[:token])
+    group = Group.find_by_name(params[:group_name])
+    logger.info group.inspect
+    GroupMembership.find_by_announcee_id_and_group_id(announcee.id, group.id).update_attribute(:subscribed_to_mailings, false)
+    redirect_to posts_url(:token => announcee.token), notice: "Unsubscribed to mailings from the #{group.name} group"
   end
 end
