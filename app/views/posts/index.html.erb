@@ -1,8 +1,10 @@
 <% @posts.each do |post| %>
-  <h2><%= post.title %>&nbsp;<%= link_to "Edit", edit_post_path(post) if current_user  && current_user.has_role?(:admin) %></h2>
-  <h4>Posted on <%= l post.created_at, :format => :date_and_time %></h4>
-  <%= raw post.body %>
-  <hr>
+  <div class="well">
+    <h2><%= post.title %>&nbsp;<%= link_to "Edit", edit_post_path(post) if current_user  && current_user.has_role?(:admin) %></h2>
+    <h4>Posted on <%= l post.created_at, :format => :date_and_time %></h4>
+    <hr>
+    <%= raw post.body %>
+  </div>
 <%- end -%>
 <%= will_paginate @posts %>
 <%= link_to 'New Post', new_post_path if current_user  && current_user.has_role?(:admin) %>
