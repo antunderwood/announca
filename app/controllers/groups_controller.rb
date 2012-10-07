@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.sorted.all
+    authorize! :index, Group
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
-
+    authorize! :show, @group
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }
@@ -25,6 +27,7 @@ class GroupsController < ApplicationController
   # GET /groups/new.json
   def new
     @group = Group.new
+    authorize! :create, @group
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +38,14 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
+    authorize! :update, @group
   end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
-
+    authorize! :create, @group
     respond_to do |format|
       if @group.save
         format.html { redirect_to groups_url, notice: 'Group was successfully created.' }
@@ -57,6 +61,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group = Group.find(params[:id])
+    authorize! :update, @group
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
@@ -73,6 +78,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
+    authorize! :destroy, @group
     @group.destroy
 
     respond_to do |format|

@@ -33,6 +33,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    authorize! :create, @post
     @groups = Group.sorted.all
 
     respond_to do |format|
@@ -44,6 +45,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    authorize! :update, @post
     @groups = Group.sorted.all
   end
 
@@ -51,6 +53,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    authorize! :create, @post
 
     respond_to do |format|
       if @post.save
@@ -67,7 +70,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
-
+    authorize! :update, @post
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -83,6 +86,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    authorize! :destroy, @post
     @post.destroy
 
     respond_to do |format|

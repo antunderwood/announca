@@ -3,7 +3,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees.json
   def index
     @announcees = Announcee.all
-
+    authorize! :index, Announcee
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @announcees }
@@ -14,7 +14,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/1.json
   def show
     @announcee = Announcee.find(params[:id])
-
+    authorize! :show, @announcee
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @announcee }
@@ -25,6 +25,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/new.json
   def new
     @announcee = Announcee.new
+    authorize! :create, @announcee
     @announcee.setup_group_memberships
 
     respond_to do |format|
@@ -36,6 +37,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees/1/edit
   def edit
     @announcee = Announcee.find(params[:id])
+    authorize! :update, @announcee
     @announcee.setup_group_memberships
   end
 
@@ -43,7 +45,8 @@ class AnnounceesController < ApplicationController
   # POST /announcees.json
   def create
     @announcee = Announcee.new(params[:announcee])
-
+    authorize! :create, @announcee
+    
     respond_to do |format|
       if @announcee.save
         format.html { redirect_to announcees_url, notice: 'Announcee was successfully created.' }
@@ -59,6 +62,7 @@ class AnnounceesController < ApplicationController
   # PUT /announcees/1.json
   def update
     @announcee = Announcee.find(params[:id])
+    authorize! :update, @announcee
 
     respond_to do |format|
       if @announcee.update_attributes(params[:announcee])
@@ -75,6 +79,7 @@ class AnnounceesController < ApplicationController
   # DELETE /announcees/1.json
   def destroy
     @announcee = Announcee.find(params[:id])
+    authorize! :destroy, @announcee
     @announcee.destroy
 
     respond_to do |format|
