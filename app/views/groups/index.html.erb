@@ -13,7 +13,7 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= link_to 'Edit', edit_group_path(group), :class => "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', group, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', group, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
