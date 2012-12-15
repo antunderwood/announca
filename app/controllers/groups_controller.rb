@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    @announcees = @group.announcees.order(:last_name)
     authorize! :show, @group
     
     respond_to do |format|
