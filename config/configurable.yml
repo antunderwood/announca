@@ -22,6 +22,11 @@ blog_emailer_address:
   name: Blog emailer address
   type: string
   default: "me@example.com"
+
+blog_host_url:
+  name: Blog URL
+  type: string
+  default: "myapp.herokuapp.com"
 #   
 # 'name' is the name that appears in the edit form
 # 
