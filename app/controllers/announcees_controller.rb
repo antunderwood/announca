@@ -2,7 +2,7 @@ class AnnounceesController < ApplicationController
   # GET /announcees
   # GET /announcees.json
   def index
-    @announcees = Announcee.all
+    @announcees = Announcee.order(:last_name).all
     authorize! :index, Announcee
     respond_to do |format|
       format.html # index.html.erb
