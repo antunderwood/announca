@@ -5,5 +5,5 @@ Dear <%= @announcee.first_name %><br/>
 <%= raw @post.body %>
 
 <% @post.groups.each do |group| %>
-  Unsubscribe to <%= group.name %> post mailings <%= link_to "Click here", unsubscribe_url(:group_name => group.name, :token => @announcee.token, :host => (Rails.env.development? Rails.application.config.action_mailer.default_url_options : Configurable.blog_host_url) %><br>
+  Unsubscribe to <%= group.name %> post mailings <%= link_to "Click here", unsubscribe_url(:group_name => group.name, :token => @announcee.token, :host => (Rails.env.development? Rails.application.config.action_mailer.default_url_options : Configurable.blog_host_url)) %><br>
 <% end %>
