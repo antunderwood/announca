@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
     state :declined
     
     event :publish do
-      transitions :to => :declined, :from => :draft, :on_transition => :send_mailing
+      transitions :to => :published, :from => :draft, :on_transition => :send_mailing
     end
   end
   attr_accessible :body, :title, :group_ids
@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
   def self.viewable_by_announcee(announcee)
     groups = announcee.groups
     joins(:groups).where("groups.id IN (?) OR groups.name = ?", groups.map{|group| group.id}, "public").uniq
+  end
+
+  def self.published?
+    where("state = ?", "published")
   end
   
   private

@@ -13,7 +13,7 @@
 
 <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-success" %> 
 <% if @post.draft? %>
-	<span id="publishing_spinner"></span>
+	<span class="publishing_spinner"></span>
 	<span class="btn btn-danger publish_post" data-post-id="<%= @post.id %>">Publish</span>
 <% end %>
 <%= link_to 'Delete', @post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
