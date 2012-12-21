@@ -10,6 +10,6 @@ class PostMailer < ActionMailer::Base
     @post = post
     @announcee = email_recipient
     mail to: @announcee.email,
-         subject: "Announca: #{post.title}"
+         subject: "#{Configurable.site_title}: #{post.title}"
   end
 end

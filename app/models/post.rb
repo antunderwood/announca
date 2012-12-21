@@ -1,9 +1,18 @@
 class Post < ActiveRecord::Base
+  include ActiveModel::Transitions
+  state_machine do
+    state :draft # first one is initial state
+    state :published
+    state :declined
+    
+    event :publish do
+      transitions :to => :declined, :from => :draft, :on_transition => :send_mailing
+    end
+  end
   attr_accessible :body, :title, :group_ids
   has_many :groups, :through => :post_group_associations
   has_many :post_group_associations
   accepts_nested_attributes_for :groups, :allow_destroy => true
-  after_create :send_mailing
   default_scope order("created_at DESC")
 
   def self.public

@@ -6,6 +6,7 @@ Announca::Application.routes.draw do
   resources :groups
 
   resources :posts
+  match '/posts' => 'posts#update', :via => :put
 
   mount Ckeditor::Engine => '/ckeditor'
 

@@ -16,6 +16,7 @@ gem 'aws-sdk', '~> 1.3.4'
 gem 'bootstrap-will_paginate'
 gem 'exception_notification'
 gem 'configurable_engine'
+gem "transitions", :require => ["transitions", "active_model/transitions"]
 
 # Gems used only for assets and not required
 # in production environments by default.

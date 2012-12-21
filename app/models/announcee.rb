@@ -1,5 +1,5 @@
 class Announcee < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :group_ids, :group_memberships_attributes
+  attr_accessible :email, :first_name, :last_name, :term_of_address, :announcement_text, :group_ids, :group_memberships_attributes
   has_many :groups, :through => :group_memberships
   has_many :group_memberships
   accepts_nested_attributes_for :group_memberships, reject_if: lambda { |group_membership_params| group_membership_params[:group_id] == 0 }, :allow_destroy => true

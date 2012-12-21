@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909164429) do
+ActiveRecord::Schema.define(:version => 20121221204638) do
 
   create_table "announcees", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
+    t.string   "term_of_address",   :default => "Dear"
+    t.string   "announcement_text", :default => "has a new posting for you"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20120909164429) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "state"
   end
 
   create_table "roles", :force => true do |t|

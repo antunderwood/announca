@@ -71,13 +71,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     authorize! :update, @post
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if params[:publish] == "true"
+      @post.publish!
+      respond_to do |format|
+        format.js
+      end
+    else
+      respond_to do |format|
+        if @post.update_attributes(params[:post])
+          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+          format.json { head :no_content }
+          format.js
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
