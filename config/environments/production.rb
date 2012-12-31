@@ -76,7 +76,6 @@ ActionMailer::Base.smtp_settings = {
   :port           => '587',
   :authentication => :plain,
   :user_name      => ENV['MANDRILL_USERNAME'],
-  :password       => ENV['MANDRILL_APIKEY'],
-  :domain         => 'heroku.com'
+  :password       => ENV['MANDRILL_APIKEY']
 }
 ActionMailer::Base.delivery_method = :smtp
