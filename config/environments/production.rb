@@ -72,11 +72,11 @@ Announca::Application.configure do
     :exception_recipients => ["email2ants@gmail.com"]
 end
 ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
+  :address        => 'smtp.mandrillapp.com',
   :port           => '587',
   :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
+  :user_name      => ENV['MANDRILL_USERNAME'],
+  :password       => ENV['MANDRILL_APIKEY'],
   :domain         => 'heroku.com'
 }
 ActionMailer::Base.delivery_method = :smtp
