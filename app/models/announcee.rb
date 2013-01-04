@@ -3,6 +3,7 @@ class Announcee < ActiveRecord::Base
   has_many :groups, :through => :group_memberships
   has_many :group_memberships
   accepts_nested_attributes_for :group_memberships, reject_if: lambda { |group_membership_params| group_membership_params[:group_id] == 0 }, :allow_destroy => true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   before_create :create_token
   
   def self.mail_recipients_for_post(post)
