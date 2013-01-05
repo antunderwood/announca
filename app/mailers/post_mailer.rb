@@ -9,6 +9,7 @@ class PostMailer < ActionMailer::Base
   def new_post(post, email_recipient)
     @post = post
     @announcee = email_recipient
+    @groups = @post.groups & @announcee.groups
     mail to: @announcee.email,
          subject: "#{Configurable.site_title}: #{post.title}"
   end

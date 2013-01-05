@@ -6,7 +6,11 @@ class PostsController < ApplicationController
       @posts = Post.paginate(:page => params[:page], :per_page => 5)
     elsif params[:token]
       announcee = Announcee.find_by_token(params[:token])
-      @posts = Post.published?.viewable_by_announcee(announcee).paginate(:page => params[:page], :per_page => 5)
+      if announcee.nil?
+        @posts = Post.published?.public.paginate(:page => params[:page], :per_page => 5)
+      else
+        @posts = Post.published?.viewable_by_announcee(announcee).paginate(:page => params[:page], :per_page => 5)
+      end
     else
       @posts = Post.published?.public.paginate(:page => params[:page], :per_page => 5)
     end

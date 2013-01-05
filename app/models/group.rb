@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :posts, :through => :post_group_associations
   has_many :post_group_associations
   has_many :announcees, :through => :group_memberships
-  has_many :group_memberships
+  has_many :group_memberships, :dependent => :destroy
 
   def self.sorted
     order(:name)
