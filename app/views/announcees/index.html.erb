@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% @announcees.each do |announcee| %>
-      <tr>
+      <tr><a name="announcee-<%= announcee.id %>"></a>
     	<td><%= link_to announcee.full_name, announcee, :class => "btn btn-info" %></td>
         <td><%= announcee.email %></td>
         <td><%= link_to "Web link", posts_url(:token => announcee.token), :class => "btn btn-primary" %></td>

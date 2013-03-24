@@ -66,7 +66,7 @@ class AnnounceesController < ApplicationController
 
     respond_to do |format|
       if @announcee.update_attributes(params[:announcee])
-        format.html { redirect_to announcees_url, notice: 'Announcee was successfully updated.' }
+        format.html { redirect_to announcees_url(:anchor => "announcee-#{@announcee.id}"), notice: 'Announcee was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
