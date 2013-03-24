@@ -15,8 +15,8 @@
   </thead>
   <tbody>
     <% @announcees.each do |announcee| %>
-      <tr><a name="announcee-<%= announcee.id %>"></a>
-    	<td><%= link_to announcee.full_name, announcee, :class => "btn btn-info" %></td>
+      <tr>
+    	<td><a name="announcee-<%= announcee.id %>"></a><%= link_to announcee.full_name, announcee, :class => "btn btn-info" %></td>
         <td><%= announcee.email %></td>
         <td><%= link_to "Web link", posts_url(:token => announcee.token), :class => "btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_announcee_path(announcee) , :class => "btn btn-success" %></td>
